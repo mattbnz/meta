@@ -44,6 +44,12 @@ func Named(name string, root string) App {
 	if len(name) == 0 || name == "." {
 		name = filepath.Base(root)
 	}
+	// Check if we've been invoked from a subdir
+	if name == "actions" || name == "models" || name == "public" || name == "templates" {
+		// If so, strip it so we can find go.mod, config/buffalo-app.toml in the right place.
+		root = filepath.Dir(root)
+	}
+
 	pp := resolvePackageName(name, pwd)
 
 	app := App{
