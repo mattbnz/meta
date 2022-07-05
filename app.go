@@ -29,6 +29,7 @@ type App struct {
 	PackagePkg  string      `json:"package_path" toml:"-"`
 	ActionsPkg  string      `json:"actions_path" toml:"-"`
 	ModelsPkg   string      `json:"models_path" toml:"-"`
+	DbPkg				string			`json:"db_path" toml:"-"`
 	GriftsPkg   string      `json:"grifts_path" toml:"-"`
 	WithModules bool        `json:"with_modules" toml:"-"`
 	Name        name.Ident  `json:"name" toml:"name"`
@@ -123,6 +124,7 @@ func (a *App) PackageRoot(pp string) {
 	a.PackagePkg = pp
 	a.ActionsPkg = pp + "/actions"
 	a.ModelsPkg = pp + "/models"
+	a.DbPkg = pp + "/db"
 	a.GriftsPkg = pp + "/grifts"
 }
 
